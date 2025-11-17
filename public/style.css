@@ -1,0 +1,382 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f2f4f8;
+  color: #000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.username {
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bell {
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+.count {
+  display: none;
+  background: red;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+}
+
+.notifications {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  background: #fff;
+  border: 1px solid #ccc;
+  width: 260px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 10px;
+  z-index: 999;
+}
+
+.notifications .message {
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+
+.notifications .message:last-child {
+  border-bottom: none;
+}
+
+.notifications strong {
+  display: block;
+  font-weight: bold;
+}
+
+.notifications small {
+  color: #888;
+  font-size: 11px;
+  display: block;
+  margin-top: 2px;
+}
+
+/* --- LAYOUT --- */
+.main {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 60px);
+}
+
+.sidebar {
+  width: 250px;
+  background: #fff;
+  border-right: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar li:hover {
+  background: #f5f5f5;
+}
+
+.msg-badge {
+  background: #2196f3;
+  color: white;
+  border-radius: 10px;
+  font-size: 11px;
+  padding: 2px 6px;
+  margin-left: 8px;
+}
+
+/* --- CHAT --- */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+}
+
+.chat-header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  font-weight: bold;
+  min-height: 50px;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.message-row.me {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  background: #e1f5fe;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+  color: #000;
+}
+
+.message-row.me .message-bubble {
+  background: #d1ffd6;
+}
+
+.message-bubble small {
+  display: block;
+  font-size: 11px;
+  color: #777;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* --- CHAT INPUT --- */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+  background: #fff;
+  padding: 8px;
+}
+
+#chatInput {
+  flex: 1;
+  padding: 10px;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 40px;
+}
+
+#sendChat {
+  margin-left: 8px;
+  padding: 10px 15px;
+  border: none;
+  background: #2196f3;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#sendChat:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- USER PANEL --- */
+#userPanel {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 8px;
+  z-index: 1000;
+  width: 150px;
+  font-size: 14px;
+}
+
+#userPanel div {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+#userPanel div:last-child {
+  border-bottom: none;
+}
+
+#userPanel div:hover {
+  background: #f5f5f5;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.navbar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hide seconds field in Chrome, Edge, and Safari */
+input[type="time"]::-webkit-datetime-edit-second-field {
+  display: none;
+}
+
+/* Optional: adjust layout to keep width natural */
+input[type="time"] {
+  width: 120px;
+}
+
+/* MOBILE FIX – ONLY ADD THIS */
+@media (max-width: 768px) {
+
+  /* stack layout vertically */
+  .main {
+    flex-direction: column !important;
+  }
+
+  /* sidebar becomes small and scrollable */
+  .sidebar {
+    width: 100% !important;
+    height: 140px !important;
+    overflow-y: auto !important;
+    order: 1 !important;
+  }
+
+  /* chat takes remaining space */
+  .chat {
+    width: 100% !important;
+    height: calc(100vh - 200px) !important;
+    order: 2 !important;
+  }
+
+  .chat-messages {
+    height: calc(100% - 130px) !important;
+  }
+
+  /* message bubble width */
+  .message-bubble {
+    max-width: 85% !important;
+    word-wrap: break-word !important;
+  }
+
+  /* bell + count stay in correct place */
+  .right {
+    position: relative !important;
+  }
+
+  #notifications {
+    right: 0 !important;
+    width: 90% !important;
+    left: 5% !important;
+  }
+
+  /* buttons wrap nicely */
+  .chat-input {
+    flex-wrap: wrap !important;
+  }
+
+  #chatInput {
+    width: 100% !important;
+    margin-bottom: 5px;
+  }
+
+  #sendChat,
+  #scheduleChat,
+  #scheduleTime {
+    width: 48% !important;
+  }
+}
+
+/* EXTRA FIX FOR VERY SMALL PHONES */
+@media (max-width: 480px) {
+  .sidebar {
+    height: 120px !important;
+  }
+  .chat {
+    height: calc(100vh - 180px) !important;
+  }
+}
+
+.media-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.media-buttons button {
+  padding: 6px 10px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  background: white;
+  cursor: pointer;
+}
+
+.media-buttons button:hover {
+  background: #f0f0f0;
+}
+
+
+.media-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.media-buttons button {
+  padding: 6px 10px;
+  font-size: 18px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}

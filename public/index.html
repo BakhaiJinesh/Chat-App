@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Chat App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="navbar">
+    <div class="left">
+      <h2 id="username" class="username">User</h2>
+    </div>
+    <div class="right">
+      <span id="bell" class="bell">🔔</span>
+      <span id="count" class="count">0</span>
+      <div id="notifications" class="notifications"></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="sidebar">
+      <h3>Online Users</h3>
+      <ul id="users"></ul>
+    </div>
+    <div class="chat">
+      <div id="chatHeader" class="chat-header">Select a user to chat</div>
+      <div id="chatMessages" class="chat-messages"></div>
+      <div class="chat-input">
+
+        <div class="media-buttons">
+          <button id="emojiBtn" type="button">😊</button>
+          <input id="imageInput" type="file" accept="image/*" hidden>
+          <button id="imageBtn" type="button">🖼️</button>
+          <input id="gifInput" type="file" accept="image/gif" hidden>
+          <button id="gifBtn" type="button">GIF</button>
+          <input id="videoInput" type="file" accept="video/*" hidden>
+          <button id="videoBtn" type="button">🎥</button>
+        </div>
+
+        <textarea id="chatInput" placeholder="Type..." disabled></textarea>
+        <button id="sendChat" disabled>Send</button>
+        <input type="time" id="scheduleTime" step="60" />
+        <button id="scheduleChat" disabled>Schedule</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
