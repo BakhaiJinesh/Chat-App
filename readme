@@ -1,0 +1,5 @@
+Download Node,NPM and all Required Packages.
+open integrated terminal command
+run `node server.js`
+pass port number to PORTS section
+Change visiblity to Public
